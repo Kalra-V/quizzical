@@ -1,15 +1,19 @@
-/* body {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-}
-.main-container {
-    background-color: antiquewhite;
-    padding: 10px;
+
+.buttonSizing {
+    --bs-btn-padding-y: .25rem;
+    --bs-btn-padding-x: .5rem;
+    --bs-btn-font-size: 0.95rem;
 }
 
-.btn {
-    background-color: aquamarine;
-    border: none;
-    margin-left: 5px;
-    border-radius: 6px;
-    cursor: pointer;
-} */
+.main-app {
+    width: 90%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bold-weight {
+    font-weight: 600;
+}
