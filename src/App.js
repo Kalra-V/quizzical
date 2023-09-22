@@ -14,6 +14,7 @@ function App() {
   const [scoreCounter, setScoreCounter] = React.useState(0);
   const [submitted, setSubmitted] = React.useState(false);
   const [restart, setRestart] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const he = require("he")
 
   // CORRECT ANSWERS ARRAY, TO MATCH CORRECT ANSWERS
@@ -32,6 +33,7 @@ function App() {
         // To set options once and for all, otherwise they were changing on each click.
         setShuffledOptions(shuffledOptions)
         setRestart(false)
+        setLoading(false)
       });
   };
 
@@ -119,33 +121,39 @@ function App() {
       </div>
     ))}
     <div className='d-flex justify-content-start align-items-center gap-3'>
-    {!submitted &&(<button className= 'bold-weight btn btn-outline-dark'
-    onClick={() => {
-      setSubmitted(true);
-      countScore()
-    }}>Submit</button>)}
-    {submitted && (<div>
-      <span className='bold-weight h4'>Your score is : {scoreCounter}/5</span>
-      <button className="btn btn-primary mx-3" onClick={() => restartGame()}>Play again?</button>
+      {!submitted && (<button className='bold-weight btn btn-outline-dark'
+        onClick={() => {
+          setSubmitted(true);
+          countScore()
+        }}>Submit</button>)}
+      {submitted && (<div>
+        <span className='bold-weight h4'>Your score is : {scoreCounter}/5</span>
+        <button className="btn btn-primary mx-3" onClick={() => restartGame()}>Play again?</button>
+      </div>
+      )
+      }
     </div>
-    )
-    }
-    </div>
-    </div>)
+  </div>)
 
   // MAIN RENDER RETURN
-    return (
+  return (
     playingGame
       ?
       <div className='d-flex justify-content-center flex-column align-items-center vh-100'>
-        <p className='bold-weight h2 pb-5'>Quizzical App</p>
-        <button class="btn btn-dark btn-lg" onClick={() => setPlayingGame(false)}>Start Game</button>
+        <p className='bold-weight h2 pb-3'>Quizzical App</p>
+        <p className='mx-5 px-5 pb-2'>This is a quiz with multiple choice questions. Pick one option out of the four and when done, click on the 'Submit' button.</p>
+        <button class="btn btn-dark btn-lg" onClick={() => setPlayingGame(false)}>Start Quiz</button>
       </div>
-      :
-    <Questions dataToRender={dataToRender} />)
+      : (loading ?
+        <div class="d-flex align-items-center">
+          <strong role="status">Loading...</strong>
+          <div class="spinner-border ms-auto" aria-hidden="true"></div>
+        </div> : <Questions dataToRender={dataToRender} />
+      )
+  )
 
 }
 
 
 
-    export default App;
+export default App;
