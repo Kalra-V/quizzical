@@ -6,7 +6,7 @@ The Challenge:
 
 - Get quiz data from the Open Trivia Database API
 - Display quiz questions and possible answers
-- Tally correct answers after 'check answers' is clicked
+- Tally correct answers after 'Submit' is clicked
 - Style answers based on whether it was correct/incorrect
 
 https://kalra-v.github.io/quizzical/
